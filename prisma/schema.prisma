@@ -1,5 +1,4 @@
 // Ziggy Alpha Hub Database Schema
-// This schema implements the data model from the PRD
 
 generator client {
   provider = "prisma-client-js"
@@ -9,10 +8,6 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
-// ============================================
-// USERS & AUTHENTICATION
-// ============================================
 
 enum UserRole {
   parent
@@ -27,7 +22,6 @@ model User {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   
-  // Relations
   learner        Learner?
   parentLearners Learner[] @relation("ParentLearners")
 }
@@ -44,7 +38,6 @@ model Learner {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
-  // Relations
   user          User?          @relation(fields: [userId], references: [id])
   parent        User           @relation("ParentLearners", fields: [parentId], references: [id])
   attempts      Attempt[]
@@ -52,10 +45,6 @@ model Learner {
   testRuns      TestRun[]
   masteryStates MasteryState[]
 }
-
-// ============================================
-// TRACKS, SUBJECTS, TOPICS
-// ============================================
 
 enum TimePriority {
   exam_critical
@@ -75,7 +64,6 @@ model Track {
   createdAt            DateTime     @default(now())
   updatedAt            DateTime     @updatedAt
 
-  // Relations
   subjects      Subject[]
   topics        Topic[]
   items         Item[]
@@ -95,12 +83,10 @@ model Subject {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  // Relations
   track         Track          @relation(fields: [trackId], references: [id])
   topics        Topic[]
   items         Item[]
   attempts      Attempt[]
-  srsEntries    SrsEntry[]
   masteryStates MasteryState[]
 }
 
@@ -117,14 +103,13 @@ model Topic {
   name          String
   description   String?
   level         TopicLevel @default(foundation)
-  prerequisites Json       @default("[]") // Array of topic_ids
+  prerequisites Json       @default("[]")
   masteryRules  Json       @default("{\"min_recent_attempts\": 10, \"min_accuracy\": 0.8, \"min_days_span\": 3}")
-  tags          Json       @default("[]") // Array of strings
+  tags          Json       @default("[]")
   sortOrder     Int        @default(0)
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
 
-  // Relations
   track         Track          @relation(fields: [trackId], references: [id])
   subject       Subject        @relation(fields: [subjectId], references: [id])
   items         Item[]
@@ -133,32 +118,23 @@ model Topic {
   masteryStates MasteryState[]
 }
 
-// ============================================
-// ITEMS (Questions/Tasks)
-// ============================================
-
 model Item {
   id         String   @id @default(uuid())
   trackId    String
   subjectId  String
   topicId    String
-  typeId     String   // mcq, short_answer, coding_task, etc.
-  difficulty Int      @default(2) // 1-5
-  payload    Json     // Question content, options, correct answer, etc.
+  typeId     String
+  difficulty Int      @default(2)
+  payload    Json
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  // Relations
   track      Track      @relation(fields: [trackId], references: [id])
   subject    Subject    @relation(fields: [subjectId], references: [id])
   topic      Topic      @relation(fields: [topicId], references: [id])
   attempts   Attempt[]
   srsEntries SrsEntry[]
 }
-
-// ============================================
-// ATTEMPTS & SCORING
-// ============================================
 
 model Attempt {
   id          String   @id @default(uuid())
@@ -175,7 +151,6 @@ model Attempt {
   rawResponse Json?
   testRunId   String?
 
-  // Relations
   learner Learner  @relation(fields: [learnerId], references: [id])
   item    Item     @relation(fields: [itemId], references: [id])
   track   Track    @relation(fields: [trackId], references: [id])
@@ -186,10 +161,6 @@ model Attempt {
   @@index([learnerId, topicId])
   @@index([learnerId, timestamp])
 }
-
-// ============================================
-// SPACED REPETITION (SRS)
-// ============================================
 
 model SrsEntry {
   id             String   @id @default(uuid())
@@ -204,7 +175,6 @@ model SrsEntry {
   reviewCount    Int      @default(0)
   lapseCount     Int      @default(0)
 
-  // Relations
   learner Learner @relation(fields: [learnerId], references: [id])
   item    Item    @relation(fields: [itemId], references: [id])
   track   Track   @relation(fields: [trackId], references: [id])
@@ -213,10 +183,6 @@ model SrsEntry {
   @@unique([learnerId, itemId])
   @@index([learnerId, nextDueAt])
 }
-
-// ============================================
-// TEST RUNS / ASSESSMENTS
-// ============================================
 
 enum TestMode {
   diagnostic
@@ -235,20 +201,15 @@ model TestRun {
   completedAt   DateTime?
   totalScore    Float?
   maxScore      Float?
-  sectionScores Json?     // { "maths": { "score": 15, "max": 20 } }
+  sectionScores Json?
   timeLimitMins Int?
 
-  // Relations
   learner  Learner   @relation(fields: [learnerId], references: [id])
   track    Track     @relation(fields: [trackId], references: [id])
   attempts Attempt[]
 
   @@index([learnerId, startedAt])
 }
-
-// ============================================
-// MASTERY STATE
-// ============================================
 
 enum MasteryStatus {
   not_started
@@ -276,7 +237,6 @@ model MasteryState {
   rag            RagStatus     @default(red)
   lastUpdatedAt  DateTime      @default(now())
 
-  // Relations
   learner Learner @relation(fields: [learnerId], references: [id])
   track   Track   @relation(fields: [trackId], references: [id])
   subject Subject @relation(fields: [subjectId], references: [id])
