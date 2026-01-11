@@ -1,0 +1,216 @@
+{
+  "track_id": "track_coding",
+  "name": "Coding Coach",
+  "description": "Learn to code with Python first, then JavaScript, through creative projects",
+  "time_priority": "core_skill",
+  "default_weekly_minutes": 180,
+  "icon": "💻",
+  "color": "#10B981",
+  "subjects": [
+    {
+      "subject_id": "python_core",
+      "name": "Python Foundations",
+      "description": "Core Python concepts and syntax",
+      "icon": "🐍"
+    },
+    {
+      "subject_id": "python_intermediate",
+      "name": "Python Intermediate",
+      "description": "More advanced Python concepts",
+      "icon": "🐍"
+    },
+    {
+      "subject_id": "projects",
+      "name": "Projects",
+      "description": "Build fun projects to apply your skills",
+      "icon": "🚀"
+    }
+  ],
+  "topics": [
+    {
+      "topic_id": "py_intro_repl",
+      "subject_id": "python_core",
+      "name": "Introduction & REPL",
+      "description": "Getting started with Python and using the interactive shell",
+      "level": "foundation",
+      "prerequisites": [],
+      "mastery_rules": {
+        "min_recent_attempts": 5,
+        "min_accuracy": 0.8,
+        "min_days_span": 2
+      },
+      "tags": ["intro", "repl", "basics"]
+    },
+    {
+      "topic_id": "py_variables_types",
+      "subject_id": "python_core",
+      "name": "Variables & Data Types",
+      "description": "Creating variables and understanding strings, numbers, and booleans",
+      "level": "foundation",
+      "prerequisites": ["py_intro_repl"],
+      "mastery_rules": {
+        "min_recent_attempts": 8,
+        "min_accuracy": 0.8,
+        "min_days_span": 3
+      },
+      "tags": ["variables", "types", "strings", "numbers"]
+    },
+    {
+      "topic_id": "py_input_output",
+      "subject_id": "python_core",
+      "name": "Input & Output",
+      "description": "Using print() and input() to interact with users",
+      "level": "foundation",
+      "prerequisites": ["py_variables_types"],
+      "mastery_rules": {
+        "min_recent_attempts": 6,
+        "min_accuracy": 0.8,
+        "min_days_span": 2
+      },
+      "tags": ["input", "output", "print"]
+    },
+    {
+      "topic_id": "py_conditionals",
+      "subject_id": "python_core",
+      "name": "Conditionals",
+      "description": "Making decisions with if, elif, and else",
+      "level": "foundation",
+      "prerequisites": ["py_input_output"],
+      "mastery_rules": {
+        "min_recent_attempts": 10,
+        "min_accuracy": 0.8,
+        "min_days_span": 3
+      },
+      "tags": ["conditionals", "if", "else", "logic"]
+    },
+    {
+      "topic_id": "py_loops",
+      "subject_id": "python_core",
+      "name": "Loops",
+      "description": "Repeating code with for and while loops",
+      "level": "foundation",
+      "prerequisites": ["py_conditionals"],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.8,
+        "min_days_span": 4
+      },
+      "tags": ["loops", "for", "while", "iteration"]
+    },
+    {
+      "topic_id": "py_lists",
+      "subject_id": "python_core",
+      "name": "Lists",
+      "description": "Working with collections of data using lists",
+      "level": "foundation",
+      "prerequisites": ["py_loops"],
+      "mastery_rules": {
+        "min_recent_attempts": 10,
+        "min_accuracy": 0.8,
+        "min_days_span": 3
+      },
+      "tags": ["lists", "collections", "data structures"]
+    },
+    {
+      "topic_id": "py_functions",
+      "subject_id": "python_core",
+      "name": "Functions",
+      "description": "Creating reusable code blocks with functions",
+      "level": "intermediate",
+      "prerequisites": ["py_lists"],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.75,
+        "min_days_span": 4
+      },
+      "tags": ["functions", "def", "return", "parameters"]
+    },
+    {
+      "topic_id": "py_dictionaries",
+      "subject_id": "python_intermediate",
+      "name": "Dictionaries",
+      "description": "Storing key-value pairs for organized data",
+      "level": "intermediate",
+      "prerequisites": ["py_lists"],
+      "mastery_rules": {
+        "min_recent_attempts": 10,
+        "min_accuracy": 0.75,
+        "min_days_span": 3
+      },
+      "tags": ["dictionaries", "key-value", "data structures"]
+    },
+    {
+      "topic_id": "py_string_methods",
+      "subject_id": "python_intermediate",
+      "name": "String Methods",
+      "description": "Manipulating text with built-in string methods",
+      "level": "intermediate",
+      "prerequisites": ["py_functions"],
+      "mastery_rules": {
+        "min_recent_attempts": 8,
+        "min_accuracy": 0.8,
+        "min_days_span": 3
+      },
+      "tags": ["strings", "methods", "text"]
+    },
+    {
+      "topic_id": "project_calculator",
+      "subject_id": "projects",
+      "name": "Calculator Project",
+      "description": "Build a simple calculator that does basic maths",
+      "level": "foundation",
+      "prerequisites": ["py_conditionals"],
+      "mastery_rules": {
+        "min_recent_attempts": 3,
+        "min_accuracy": 0.8,
+        "min_days_span": 1
+      },
+      "tags": ["project", "calculator", "beginner"]
+    },
+    {
+      "topic_id": "project_number_guessing",
+      "subject_id": "projects",
+      "name": "Number Guessing Game",
+      "description": "Create a game where the computer picks a number and you guess it",
+      "level": "foundation",
+      "prerequisites": ["py_loops"],
+      "mastery_rules": {
+        "min_recent_attempts": 3,
+        "min_accuracy": 0.8,
+        "min_days_span": 1
+      },
+      "tags": ["project", "game", "random"]
+    },
+    {
+      "topic_id": "project_quiz_game",
+      "subject_id": "projects",
+      "name": "Quiz Game Project",
+      "description": "Build your own quiz game with questions and scoring",
+      "level": "intermediate",
+      "prerequisites": ["py_dictionaries"],
+      "mastery_rules": {
+        "min_recent_attempts": 3,
+        "min_accuracy": 0.8,
+        "min_days_span": 1
+      },
+      "tags": ["project", "game", "quiz"]
+    }
+  ],
+  "item_types": [
+    {
+      "type_id": "concept_mcq",
+      "description": "Multiple choice about coding concepts",
+      "supported_subjects": ["python_core", "python_intermediate"]
+    },
+    {
+      "type_id": "coding_task",
+      "description": "Write code to solve a problem",
+      "supported_subjects": ["python_core", "python_intermediate", "projects"]
+    },
+    {
+      "type_id": "debug_task",
+      "description": "Find and fix bugs in code",
+      "supported_subjects": ["python_core", "python_intermediate"]
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "track_id": "track_11plus",
+  "name": "11+ Coach",
+  "description": "Complete GL-style 11+ preparation covering Maths, English, Verbal Reasoning, and Non-Verbal Reasoning",
+  "time_priority": "exam_critical",
+  "default_weekly_minutes": 360,
+  "icon": "🎯",
+  "color": "#3B82F6",
+  "subjects": [
+    {
+      "subject_id": "maths",
+      "name": "Maths",
+      "description": "Mathematical reasoning and problem solving",
+      "icon": "🔢"
+    },
+    {
+      "subject_id": "english",
+      "name": "English",
+      "description": "Reading comprehension, vocabulary, and grammar",
+      "icon": "📖"
+    },
+    {
+      "subject_id": "vr",
+      "name": "Verbal Reasoning",
+      "description": "Word patterns, codes, and logical word problems",
+      "icon": "🔤"
+    },
+    {
+      "subject_id": "nvr",
+      "name": "Non-Verbal Reasoning",
+      "description": "Visual patterns, sequences, and spatial reasoning",
+      "icon": "🔷"
+    }
+  ],
+  "topics": [
+    {
+      "topic_id": "maths_place_value",
+      "subject_id": "maths",
+      "name": "Place Value & Rounding",
+      "description": "Understanding place value in numbers up to millions and rounding to different decimal places",
+      "level": "foundation",
+      "prerequisites": [],
+      "mastery_rules": {
+        "min_recent_attempts": 10,
+        "min_accuracy": 0.85,
+        "min_days_span": 3
+      },
+      "tags": ["number", "place_value", "rounding"]
+    },
+    {
+      "topic_id": "maths_four_operations",
+      "subject_id": "maths",
+      "name": "Four Operations",
+      "description": "Addition, subtraction, multiplication, and division with whole numbers",
+      "level": "foundation",
+      "prerequisites": ["maths_place_value"],
+      "mastery_rules": {
+        "min_recent_attempts": 15,
+        "min_accuracy": 0.85,
+        "min_days_span": 5
+      },
+      "tags": ["arithmetic", "operations"]
+    },
+    {
+      "topic_id": "maths_fractions_basics",
+      "subject_id": "maths",
+      "name": "Fractions - Basics",
+      "description": "Understanding, comparing, and simplifying fractions",
+      "level": "foundation",
+      "prerequisites": ["maths_four_operations"],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.8,
+        "min_days_span": 4
+      },
+      "tags": ["fractions", "number"]
+    },
+    {
+      "topic_id": "maths_fractions_operations",
+      "subject_id": "maths",
+      "name": "Fractions - Operations",
+      "description": "Adding, subtracting, multiplying, and dividing fractions",
+      "level": "intermediate",
+      "prerequisites": ["maths_fractions_basics"],
+      "mastery_rules": {
+        "min_recent_attempts": 15,
+        "min_accuracy": 0.8,
+        "min_days_span": 5
+      },
+      "tags": ["fractions", "operations"]
+    },
+    {
+      "topic_id": "maths_percentages",
+      "subject_id": "maths",
+      "name": "Percentages",
+      "description": "Converting between fractions, decimals, and percentages; finding percentages of amounts",
+      "level": "intermediate",
+      "prerequisites": ["maths_fractions_basics"],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.8,
+        "min_days_span": 4
+      },
+      "tags": ["percentages", "conversion"]
+    },
+    {
+      "topic_id": "maths_ratio",
+      "subject_id": "maths",
+      "name": "Ratio & Proportion",
+      "description": "Understanding and working with ratios and direct proportion",
+      "level": "intermediate",
+      "prerequisites": ["maths_fractions_basics"],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.8,
+        "min_days_span": 4
+      },
+      "tags": ["ratio", "proportion"]
+    },
+    {
+      "topic_id": "maths_measures",
+      "subject_id": "maths",
+      "name": "Measures & Time",
+      "description": "Converting between units and solving time problems",
+      "level": "foundation",
+      "prerequisites": ["maths_four_operations"],
+      "mastery_rules": {
+        "min_recent_attempts": 10,
+        "min_accuracy": 0.85,
+        "min_days_span": 3
+      },
+      "tags": ["measures", "time", "conversion"]
+    },
+    {
+      "topic_id": "maths_algebra",
+      "subject_id": "maths",
+      "name": "Algebra Basics",
+      "description": "Simple equations, finding unknowns, and algebraic expressions",
+      "level": "intermediate",
+      "prerequisites": ["maths_four_operations"],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.8,
+        "min_days_span": 4
+      },
+      "tags": ["algebra", "equations"]
+    },
+    {
+      "topic_id": "english_vocabulary",
+      "subject_id": "english",
+      "name": "Vocabulary",
+      "description": "Synonyms, antonyms, and word meanings in context",
+      "level": "foundation",
+      "prerequisites": [],
+      "mastery_rules": {
+        "min_recent_attempts": 15,
+        "min_accuracy": 0.8,
+        "min_days_span": 5
+      },
+      "tags": ["vocabulary", "synonyms", "antonyms"]
+    },
+    {
+      "topic_id": "english_comprehension_literal",
+      "subject_id": "english",
+      "name": "Comprehension - Literal",
+      "description": "Finding facts and information directly stated in texts",
+      "level": "foundation",
+      "prerequisites": ["english_vocabulary"],
+      "mastery_rules": {
+        "min_recent_attempts": 10,
+        "min_accuracy": 0.85,
+        "min_days_span": 3
+      },
+      "tags": ["comprehension", "reading"]
+    },
+    {
+      "topic_id": "english_comprehension_inference",
+      "subject_id": "english",
+      "name": "Comprehension - Inference",
+      "description": "Reading between the lines and making inferences",
+      "level": "intermediate",
+      "prerequisites": ["english_comprehension_literal"],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.75,
+        "min_days_span": 4
+      },
+      "tags": ["comprehension", "inference"]
+    },
+    {
+      "topic_id": "english_grammar",
+      "subject_id": "english",
+      "name": "Grammar & Punctuation",
+      "description": "Sentence structure, punctuation rules, and grammatical concepts",
+      "level": "foundation",
+      "prerequisites": [],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.85,
+        "min_days_span": 4
+      },
+      "tags": ["grammar", "punctuation"]
+    },
+    {
+      "topic_id": "english_cloze",
+      "subject_id": "english",
+      "name": "Cloze Exercises",
+      "description": "Filling in missing words using context clues",
+      "level": "intermediate",
+      "prerequisites": ["english_vocabulary", "english_grammar"],
+      "mastery_rules": {
+        "min_recent_attempts": 10,
+        "min_accuracy": 0.8,
+        "min_days_span": 3
+      },
+      "tags": ["cloze", "vocabulary"]
+    },
+    {
+      "topic_id": "vr_word_codes",
+      "subject_id": "vr",
+      "name": "Word Codes",
+      "description": "Cracking codes where letters represent other letters",
+      "level": "foundation",
+      "prerequisites": [],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.8,
+        "min_days_span": 4
+      },
+      "tags": ["codes", "patterns"]
+    },
+    {
+      "topic_id": "vr_odd_one_out",
+      "subject_id": "vr",
+      "name": "Odd One Out",
+      "description": "Finding the word that doesn't fit the pattern",
+      "level": "foundation",
+      "prerequisites": [],
+      "mastery_rules": {
+        "min_recent_attempts": 10,
+        "min_accuracy": 0.85,
+        "min_days_span": 3
+      },
+      "tags": ["classification", "patterns"]
+    },
+    {
+      "topic_id": "vr_analogies",
+      "subject_id": "vr",
+      "name": "Word Analogies",
+      "description": "Finding relationships between pairs of words",
+      "level": "intermediate",
+      "prerequisites": ["vr_odd_one_out"],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.8,
+        "min_days_span": 4
+      },
+      "tags": ["analogies", "relationships"]
+    },
+    {
+      "topic_id": "nvr_sequences",
+      "subject_id": "nvr",
+      "name": "Shape Sequences",
+      "description": "Identifying the next shape in a sequence",
+      "level": "foundation",
+      "prerequisites": [],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.8,
+        "min_days_span": 4
+      },
+      "tags": ["sequences", "patterns"]
+    },
+    {
+      "topic_id": "nvr_analogies",
+      "subject_id": "nvr",
+      "name": "Shape Analogies",
+      "description": "Finding relationships between pairs of shapes",
+      "level": "intermediate",
+      "prerequisites": ["nvr_sequences"],
+      "mastery_rules": {
+        "min_recent_attempts": 12,
+        "min_accuracy": 0.8,
+        "min_days_span": 4
+      },
+      "tags": ["analogies", "spatial"]
+    },
+    {
+      "topic_id": "nvr_odd_one_out",
+      "subject_id": "nvr",
+      "name": "Odd Shape Out",
+      "description": "Finding the shape that doesn't belong",
+      "level": "foundation",
+      "prerequisites": [],
+      "mastery_rules": {
+        "min_recent_attempts": 10,
+        "min_accuracy": 0.85,
+        "min_days_span": 3
+      },
+      "tags": ["classification", "shapes"]
+    }
+  ],
+  "item_types": [
+    {
+      "type_id": "mcq",
+      "description": "Multiple choice question",
+      "supported_subjects": ["maths", "english", "vr", "nvr"]
+    },
+    {
+      "type_id": "short_answer",
+      "description": "Numeric or short text answer",
+      "supported_subjects": ["maths", "english"]
+    }
+  ]
+}

@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Ziggy's Theme - Warm & Playful */
+  --ziggy-cream: #FFF8F0;
+  --ziggy-peach: #FFE5D9;
+  --ziggy-coral: #FF8A80;
+  --ziggy-sky: #87CEEB;
+  --ziggy-mint: #98D8C8;
+  --ziggy-lavender: #E6E6FA;
+  --ziggy-gold: #FFD700;
+  --ziggy-sunset: #FF6B6B;
+  
+  /* Dashboard Theme - Professional */
+  --dash-bg: #F8FAFC;
+  --dash-card: #FFFFFF;
+  --dash-border: #E2E8F0;
+  --dash-primary: #3B82F6;
+  
+  /* RAG Colors */
+  --rag-red: #EF4444;
+  --rag-amber: #F59E0B;
+  --rag-green: #10B981;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+  
+  /* Learner view - warm and friendly */
+  .learner-view {
+    @apply bg-gradient-to-br from-ziggy-cream to-ziggy-peach min-h-screen;
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  /* Parent view - clean and professional */
+  .parent-view {
+    @apply bg-dash-bg min-h-screen;
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fredoka', sans-serif;
+  }
+  
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Learner Components */
+  .learner-card {
+    @apply bg-white/90 backdrop-blur-sm rounded-3xl shadow-soft p-6 
+           border-2 border-white/50 transition-all duration-300
+           hover:shadow-elevated hover:scale-[1.02];
+  }
+  
+  .learner-button {
+    @apply px-6 py-3 rounded-2xl font-semibold text-white
+           transition-all duration-200 transform active:scale-95
+           shadow-md hover:shadow-lg;
+  }
+  
+  .learner-button-primary {
+    @apply learner-button bg-gradient-to-r from-ziggy-coral to-ziggy-sunset
+           hover:from-ziggy-sunset hover:to-ziggy-coral;
+  }
+  
+  .learner-button-secondary {
+    @apply learner-button bg-gradient-to-r from-ziggy-sky to-ziggy-mint
+           hover:from-ziggy-mint hover:to-ziggy-sky;
+  }
+  
+  /* Block cards for Today view */
+  .block-card {
+    @apply learner-card cursor-pointer relative overflow-hidden;
+  }
+  
+  .block-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full rounded-l-3xl;
+  }
+  
+  .block-card-11plus::before {
+    @apply bg-blue-500;
+  }
+  
+  .block-card-coding::before {
+    @apply bg-emerald-500;
+  }
+  
+  .block-card-animation::before {
+    @apply bg-amber-500;
+  }
+  
+  .block-card-health::before {
+    @apply bg-green-500;
+  }
+  
+  .block-card-review::before {
+    @apply bg-indigo-500;
+  }
+  
+  /* Parent Dashboard Components */
+  .dash-card {
+    @apply bg-white rounded-xl shadow-card p-6 border border-dash-border;
+  }
+  
+  .dash-stat {
+    @apply text-3xl font-bold text-gray-900;
+  }
+  
+  .dash-stat-label {
+    @apply text-sm text-gray-500 uppercase tracking-wide;
+  }
+  
+  /* RAG Status Pills */
+  .rag-pill {
+    @apply px-3 py-1 rounded-full text-xs font-semibold uppercase;
+  }
+  
+  .rag-red {
+    @apply rag-pill bg-red-100 text-red-700;
+  }
+  
+  .rag-amber {
+    @apply rag-pill bg-amber-100 text-amber-700;
+  }
+  
+  .rag-green {
+    @apply rag-pill bg-emerald-100 text-emerald-700;
+  }
+  
+  /* Mastery Status Badges */
+  .mastery-badge {
+    @apply px-3 py-1 rounded-lg text-sm font-medium;
+  }
+  
+  .mastery-not_started {
+    @apply mastery-badge bg-gray-100 text-gray-600;
+  }
+  
+  .mastery-learning {
+    @apply mastery-badge bg-red-50 text-red-600;
+  }
+  
+  .mastery-practising {
+    @apply mastery-badge bg-amber-50 text-amber-600;
+  }
+  
+  .mastery-nearly_there {
+    @apply mastery-badge bg-blue-50 text-blue-600;
+  }
+  
+  .mastery-mastered {
+    @apply mastery-badge bg-emerald-50 text-emerald-600;
+  }
+  
+  /* Question Card */
+  .question-card {
+    @apply learner-card max-w-2xl mx-auto;
+  }
+  
+  .answer-option {
+    @apply w-full text-left p-4 rounded-xl border-2 border-gray-200
+           transition-all duration-200 hover:border-ziggy-coral hover:bg-ziggy-cream;
+  }
+  
+  .answer-option.selected {
+    @apply border-ziggy-coral bg-ziggy-peach;
+  }
+  
+  .answer-option.correct {
+    @apply border-emerald-500 bg-emerald-50;
+  }
+  
+  .answer-option.incorrect {
+    @apply border-red-500 bg-red-50;
+  }
+  
+  /* Progress Ring */
+  .progress-ring {
+    @apply transform -rotate-90;
+  }
+  
+  .progress-ring-bg {
+    @apply stroke-gray-200;
+  }
+  
+  .progress-ring-progress {
+    @apply transition-all duration-500 ease-out;
+    stroke-linecap: round;
+  }
+  
+  /* Celebration Animations */
+  .celebrate {
+    @apply animate-celebrate;
+  }
+  
+  .star-burst {
+    animation: starBurst 0.6s ease-out;
+  }
+  
+  @keyframes starBurst {
+    0% {
+      transform: scale(0) rotate(0deg);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2) rotate(180deg);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1) rotate(360deg);
+      opacity: 1;
+    }
+  }
+  
+  /* Code Editor */
+  .code-editor {
+    @apply font-mono text-sm bg-gray-900 text-gray-100 rounded-xl p-4
+           overflow-auto border border-gray-700;
+  }
+  
+  .code-editor textarea {
+    @apply bg-transparent w-full min-h-[200px] outline-none resize-none;
+  }
+}
+
+@layer utilities {
+  /* Smooth scrolling */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+  
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r;
+  }
+  
+  /* Glass effect */
+  .glass {
+    @apply bg-white/30 backdrop-blur-lg border border-white/20;
+  }
+  
+  /* Glow effects */
+  .glow-sm {
+    box-shadow: 0 0 15px rgba(255, 138, 128, 0.3);
+  }
+  
+  .glow-md {
+    box-shadow: 0 0 25px rgba(255, 138, 128, 0.4);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full hover:bg-gray-400;
+}
+
+/* Focus styles */
+*:focus-visible {
+  @apply outline-none ring-2 ring-ziggy-coral ring-offset-2;
+}
+
+/* Selection */
+::selection {
+  @apply bg-ziggy-peach text-gray-900;
+}

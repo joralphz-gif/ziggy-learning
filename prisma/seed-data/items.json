@@ -1,0 +1,343 @@
+[
+  {
+    "track_id": "track_11plus",
+    "subject_id": "maths",
+    "topic_id": "maths_place_value",
+    "type_id": "mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "What is the value of the digit 7 in the number 472,836?",
+      "options": ["7", "70", "700", "70,000"],
+      "correctIndex": 3,
+      "explanation": "The 7 is in the ten thousands place, so its value is 7 × 10,000 = 70,000"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "maths",
+    "topic_id": "maths_place_value",
+    "type_id": "mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "Round 4,567 to the nearest hundred.",
+      "options": ["4,500", "4,600", "4,560", "5,000"],
+      "correctIndex": 1,
+      "explanation": "Look at the tens digit (6). Since 6 ≥ 5, round up to 4,600"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "maths",
+    "topic_id": "maths_place_value",
+    "type_id": "short_answer",
+    "difficulty": 2,
+    "payload": {
+      "question": "Write 3,456,789 in words. How many millions are there?",
+      "correctAnswer": "3",
+      "explanation": "Three million, four hundred and fifty-six thousand, seven hundred and eighty-nine. There are 3 millions."
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "maths",
+    "topic_id": "maths_four_operations",
+    "type_id": "short_answer",
+    "difficulty": 2,
+    "payload": {
+      "question": "Calculate: 347 + 256 + 189",
+      "correctAnswer": "792",
+      "explanation": "Add step by step: 347 + 256 = 603, then 603 + 189 = 792"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "maths",
+    "topic_id": "maths_four_operations",
+    "type_id": "short_answer",
+    "difficulty": 3,
+    "payload": {
+      "question": "Calculate: 24 × 15",
+      "correctAnswer": "360",
+      "explanation": "24 × 15 = 24 × 10 + 24 × 5 = 240 + 120 = 360"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "maths",
+    "topic_id": "maths_fractions_basics",
+    "type_id": "mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "Simplify the fraction 12/16",
+      "options": ["2/3", "3/4", "4/5", "6/8"],
+      "correctIndex": 1,
+      "explanation": "Divide both numerator and denominator by 4: 12÷4 = 3, 16÷4 = 4, so 12/16 = 3/4"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "maths",
+    "topic_id": "maths_fractions_basics",
+    "type_id": "mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "Which fraction is larger: 3/5 or 7/10?",
+      "options": ["3/5", "7/10", "They are equal", "Cannot tell"],
+      "correctIndex": 1,
+      "explanation": "Convert to same denominator: 3/5 = 6/10. Since 7/10 > 6/10, 7/10 is larger"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "maths",
+    "topic_id": "maths_percentages",
+    "type_id": "short_answer",
+    "difficulty": 2,
+    "payload": {
+      "question": "What is 25% of 80?",
+      "correctAnswer": "20",
+      "explanation": "25% = 1/4, so 25% of 80 = 80 ÷ 4 = 20"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "maths",
+    "topic_id": "maths_percentages",
+    "type_id": "mcq",
+    "difficulty": 3,
+    "payload": {
+      "question": "A shirt costs £40. It's reduced by 15%. What is the new price?",
+      "options": ["£34", "£35", "£36", "£38"],
+      "correctIndex": 0,
+      "explanation": "15% of £40 = £6. New price = £40 - £6 = £34"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "english",
+    "topic_id": "english_vocabulary",
+    "type_id": "mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "Which word is a synonym for 'happy'?",
+      "options": ["Sad", "Joyful", "Angry", "Tired"],
+      "correctIndex": 1,
+      "explanation": "Joyful means feeling great happiness, so it's a synonym for happy"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "english",
+    "topic_id": "english_vocabulary",
+    "type_id": "mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "Which word is an antonym for 'ancient'?",
+      "options": ["Old", "Modern", "Historic", "Traditional"],
+      "correctIndex": 1,
+      "explanation": "Ancient means very old, so modern (new/recent) is the antonym"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "english",
+    "topic_id": "english_grammar",
+    "type_id": "mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "Which sentence is punctuated correctly?",
+      "options": [
+        "The dog, ran quickly across the field.",
+        "The dog ran quickly, across the field.",
+        "The dog ran quickly across the field.",
+        "The dog ran, quickly across the field."
+      ],
+      "correctIndex": 2,
+      "explanation": "No comma is needed in this simple sentence"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "vr",
+    "topic_id": "vr_odd_one_out",
+    "type_id": "mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "Which word is the odd one out? CAT, DOG, FISH, TABLE",
+      "options": ["CAT", "DOG", "FISH", "TABLE"],
+      "correctIndex": 3,
+      "explanation": "CAT, DOG, and FISH are all animals. TABLE is furniture - the odd one out"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "vr",
+    "topic_id": "vr_word_codes",
+    "type_id": "mcq",
+    "difficulty": 3,
+    "payload": {
+      "question": "If CAT is written as DBU in a code, what would DOG be written as?",
+      "options": ["EPH", "CPF", "EPG", "EPI"],
+      "correctIndex": 0,
+      "explanation": "Each letter moves forward by 1: D→E, O→P, G→H = EPH"
+    }
+  },
+  {
+    "track_id": "track_11plus",
+    "subject_id": "nvr",
+    "topic_id": "nvr_odd_one_out",
+    "type_id": "mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "Four shapes have these features:\nA: Circle with dot inside\nB: Square with dot inside\nC: Triangle with dot inside\nD: Circle with no dot\n\nWhich is the odd one out?",
+      "options": ["A", "B", "C", "D"],
+      "correctIndex": 3,
+      "explanation": "A, B, and C all have a dot inside. D is the only shape without a dot"
+    }
+  },
+  {
+    "track_id": "track_coding",
+    "subject_id": "python_core",
+    "topic_id": "py_intro_repl",
+    "type_id": "concept_mcq",
+    "difficulty": 1,
+    "payload": {
+      "question": "What does REPL stand for in Python?",
+      "options": [
+        "Read, Execute, Print, Loop",
+        "Read, Eval, Print, Loop",
+        "Run, Execute, Program, Loop",
+        "Read, Enter, Process, Learn"
+      ],
+      "correctIndex": 1,
+      "explanation": "REPL stands for Read, Eval, Print, Loop - it reads your code, evaluates it, prints the result, and loops back for more input"
+    }
+  },
+  {
+    "track_id": "track_coding",
+    "subject_id": "python_core",
+    "topic_id": "py_variables_types",
+    "type_id": "concept_mcq",
+    "difficulty": 1,
+    "payload": {
+      "question": "What type of data is 'Hello, World!'?",
+      "options": ["Integer", "Float", "String", "Boolean"],
+      "correctIndex": 2,
+      "explanation": "Text enclosed in quotes is called a string in Python"
+    }
+  },
+  {
+    "track_id": "track_coding",
+    "subject_id": "python_core",
+    "topic_id": "py_variables_types",
+    "type_id": "coding_task",
+    "difficulty": 1,
+    "payload": {
+      "prompt": "Create a variable called `name` and set it to your name. Then create a variable called `age` and set it to your age.",
+      "starterCode": "# Create your variables below\n",
+      "testCases": [
+        {"input": "", "expectedOutput": "name and age variables exist"}
+      ],
+      "hints": ["Use = to assign values", "Strings need quotes, numbers don't"]
+    }
+  },
+  {
+    "track_id": "track_coding",
+    "subject_id": "python_core",
+    "topic_id": "py_input_output",
+    "type_id": "concept_mcq",
+    "difficulty": 1,
+    "payload": {
+      "question": "What will print('Hello ' + 'World') display?",
+      "options": ["Hello World", "HelloWorld", "Hello + World", "Error"],
+      "correctIndex": 1,
+      "explanation": "The + operator joins (concatenates) strings together without any space"
+    }
+  },
+  {
+    "track_id": "track_coding",
+    "subject_id": "python_core",
+    "topic_id": "py_conditionals",
+    "type_id": "concept_mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "What will this code print?\nx = 10\nif x > 5:\n    print('Big')\nelse:\n    print('Small')",
+      "options": ["Big", "Small", "Big Small", "Error"],
+      "correctIndex": 0,
+      "explanation": "Since x (10) is greater than 5, the condition is True, so 'Big' is printed"
+    }
+  },
+  {
+    "track_id": "track_coding",
+    "subject_id": "python_core",
+    "topic_id": "py_conditionals",
+    "type_id": "coding_task",
+    "difficulty": 2,
+    "payload": {
+      "prompt": "Write a program that checks if a number is positive, negative, or zero. Use a variable called `num` (already set for you) and print 'Positive', 'Negative', or 'Zero'.",
+      "starterCode": "num = 5\n\n# Write your if/elif/else here\n",
+      "testCases": [
+        {"input": "num = 5", "expectedOutput": "Positive"},
+        {"input": "num = -3", "expectedOutput": "Negative"},
+        {"input": "num = 0", "expectedOutput": "Zero"}
+      ],
+      "hints": ["Use if, elif, and else", "Check if num > 0 first"]
+    }
+  },
+  {
+    "track_id": "track_coding",
+    "subject_id": "python_core",
+    "topic_id": "py_loops",
+    "type_id": "concept_mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "How many times will this loop print 'Hello'?\nfor i in range(5):\n    print('Hello')",
+      "options": ["4 times", "5 times", "6 times", "It won't stop"],
+      "correctIndex": 1,
+      "explanation": "range(5) creates numbers 0, 1, 2, 3, 4 - that's 5 numbers, so the loop runs 5 times"
+    }
+  },
+  {
+    "track_id": "track_coding",
+    "subject_id": "python_core",
+    "topic_id": "py_loops",
+    "type_id": "coding_task",
+    "difficulty": 2,
+    "payload": {
+      "prompt": "Write a for loop that prints the numbers 1 to 10 (including 10).",
+      "starterCode": "# Write your for loop here\n",
+      "testCases": [
+        {"input": "", "expectedOutput": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10"}
+      ],
+      "hints": ["Use range(1, 11) to get numbers 1 to 10", "range(a, b) goes from a up to but not including b"]
+    }
+  },
+  {
+    "track_id": "track_coding",
+    "subject_id": "python_core",
+    "topic_id": "py_lists",
+    "type_id": "concept_mcq",
+    "difficulty": 2,
+    "payload": {
+      "question": "What is the output of: fruits = ['apple', 'banana', 'cherry']; print(fruits[1])",
+      "options": ["apple", "banana", "cherry", "Error"],
+      "correctIndex": 1,
+      "explanation": "Lists are zero-indexed, so fruits[0] is 'apple' and fruits[1] is 'banana'"
+    }
+  },
+  {
+    "track_id": "track_coding",
+    "subject_id": "python_core",
+    "topic_id": "py_lists",
+    "type_id": "coding_task",
+    "difficulty": 2,
+    "payload": {
+      "prompt": "Create a list called `colors` with three colors: 'red', 'green', 'blue'. Then use a for loop to print each color.",
+      "starterCode": "# Create your list and loop here\n",
+      "testCases": [
+        {"input": "", "expectedOutput": "red\ngreen\nblue"}
+      ],
+      "hints": ["Create the list with square brackets []", "Use 'for color in colors:' to loop through"]
+    }
+  }
+]

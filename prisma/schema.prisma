@@ -1,0 +1,287 @@
+// Ziggy Alpha Hub Database Schema
+// This schema implements the data model from the PRD
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// USERS & AUTHENTICATION
+// ============================================
+
+enum UserRole {
+  parent
+  learner
+}
+
+model User {
+  id             String    @id @default(uuid())
+  email          String?   @unique
+  hashedPassword String?
+  role           UserRole
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  
+  // Relations
+  learner        Learner?
+  parentLearners Learner[] @relation("ParentLearners")
+}
+
+model Learner {
+  id          String    @id @default(uuid())
+  userId      String?   @unique
+  parentId    String
+  displayName String
+  dateOfBirth DateTime?
+  examDate    DateTime?
+  timezone    String    @default("Europe/London")
+  avatarEmoji String    @default("🌟")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  user          User?          @relation(fields: [userId], references: [id])
+  parent        User           @relation("ParentLearners", fields: [parentId], references: [id])
+  attempts      Attempt[]
+  srsEntries    SrsEntry[]
+  testRuns      TestRun[]
+  masteryStates MasteryState[]
+}
+
+// ============================================
+// TRACKS, SUBJECTS, TOPICS
+// ============================================
+
+enum TimePriority {
+  exam_critical
+  core_skill
+  enrichment
+}
+
+model Track {
+  id                   String       @id
+  name                 String
+  description          String?
+  timePriority         TimePriority @default(core_skill)
+  defaultWeeklyMinutes Int          @default(120)
+  configJson           Json?
+  icon                 String       @default("📚")
+  color                String       @default("#3B82F6")
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  // Relations
+  subjects      Subject[]
+  topics        Topic[]
+  items         Item[]
+  attempts      Attempt[]
+  srsEntries    SrsEntry[]
+  testRuns      TestRun[]
+  masteryStates MasteryState[]
+}
+
+model Subject {
+  id          String   @id
+  trackId     String
+  name        String
+  description String?
+  icon        String   @default("📖")
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  track         Track          @relation(fields: [trackId], references: [id])
+  topics        Topic[]
+  items         Item[]
+  attempts      Attempt[]
+  srsEntries    SrsEntry[]
+  masteryStates MasteryState[]
+}
+
+enum TopicLevel {
+  foundation
+  intermediate
+  advanced
+}
+
+model Topic {
+  id            String     @id
+  trackId       String
+  subjectId     String
+  name          String
+  description   String?
+  level         TopicLevel @default(foundation)
+  prerequisites Json       @default("[]") // Array of topic_ids
+  masteryRules  Json       @default("{\"min_recent_attempts\": 10, \"min_accuracy\": 0.8, \"min_days_span\": 3}")
+  tags          Json       @default("[]") // Array of strings
+  sortOrder     Int        @default(0)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  // Relations
+  track         Track          @relation(fields: [trackId], references: [id])
+  subject       Subject        @relation(fields: [subjectId], references: [id])
+  items         Item[]
+  attempts      Attempt[]
+  srsEntries    SrsEntry[]
+  masteryStates MasteryState[]
+}
+
+// ============================================
+// ITEMS (Questions/Tasks)
+// ============================================
+
+model Item {
+  id         String   @id @default(uuid())
+  trackId    String
+  subjectId  String
+  topicId    String
+  typeId     String   // mcq, short_answer, coding_task, etc.
+  difficulty Int      @default(2) // 1-5
+  payload    Json     // Question content, options, correct answer, etc.
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  track      Track      @relation(fields: [trackId], references: [id])
+  subject    Subject    @relation(fields: [subjectId], references: [id])
+  topic      Topic      @relation(fields: [topicId], references: [id])
+  attempts   Attempt[]
+  srsEntries SrsEntry[]
+}
+
+// ============================================
+// ATTEMPTS & SCORING
+// ============================================
+
+model Attempt {
+  id          String   @id @default(uuid())
+  learnerId   String
+  itemId      String
+  trackId     String
+  subjectId   String
+  topicId     String
+  timestamp   DateTime @default(now())
+  isCorrect   Boolean
+  score       Float    @default(0)
+  timeTakenMs Int?
+  errorType   String?
+  rawResponse Json?
+  testRunId   String?
+
+  // Relations
+  learner Learner  @relation(fields: [learnerId], references: [id])
+  item    Item     @relation(fields: [itemId], references: [id])
+  track   Track    @relation(fields: [trackId], references: [id])
+  subject Subject  @relation(fields: [subjectId], references: [id])
+  topic   Topic    @relation(fields: [topicId], references: [id])
+  testRun TestRun? @relation(fields: [testRunId], references: [id])
+
+  @@index([learnerId, topicId])
+  @@index([learnerId, timestamp])
+}
+
+// ============================================
+// SPACED REPETITION (SRS)
+// ============================================
+
+model SrsEntry {
+  id             String   @id @default(uuid())
+  learnerId      String
+  itemId         String
+  trackId        String
+  topicId        String
+  lastReviewedAt DateTime @default(now())
+  nextDueAt      DateTime @default(now())
+  intervalDays   Float    @default(1)
+  easeFactor     Float    @default(2.5)
+  reviewCount    Int      @default(0)
+  lapseCount     Int      @default(0)
+
+  // Relations
+  learner Learner @relation(fields: [learnerId], references: [id])
+  item    Item    @relation(fields: [itemId], references: [id])
+  track   Track   @relation(fields: [trackId], references: [id])
+  topic   Topic   @relation(fields: [topicId], references: [id])
+
+  @@unique([learnerId, itemId])
+  @@index([learnerId, nextDueAt])
+}
+
+// ============================================
+// TEST RUNS / ASSESSMENTS
+// ============================================
+
+enum TestMode {
+  diagnostic
+  mock
+  mini_test
+  practice
+}
+
+model TestRun {
+  id            String    @id @default(uuid())
+  learnerId     String
+  trackId       String
+  name          String
+  mode          TestMode  @default(practice)
+  startedAt     DateTime  @default(now())
+  completedAt   DateTime?
+  totalScore    Float?
+  maxScore      Float?
+  sectionScores Json?     // { "maths": { "score": 15, "max": 20 } }
+  timeLimitMins Int?
+
+  // Relations
+  learner  Learner   @relation(fields: [learnerId], references: [id])
+  track    Track     @relation(fields: [trackId], references: [id])
+  attempts Attempt[]
+
+  @@index([learnerId, startedAt])
+}
+
+// ============================================
+// MASTERY STATE
+// ============================================
+
+enum MasteryStatus {
+  not_started
+  learning
+  practising
+  nearly_there
+  mastered
+}
+
+enum RagStatus {
+  red
+  amber
+  green
+}
+
+model MasteryState {
+  id             String        @id @default(uuid())
+  learnerId      String
+  trackId        String
+  subjectId      String
+  topicId        String
+  percentCorrect Float         @default(0)
+  attemptsCount  Int           @default(0)
+  masteryStatus  MasteryStatus @default(not_started)
+  rag            RagStatus     @default(red)
+  lastUpdatedAt  DateTime      @default(now())
+
+  // Relations
+  learner Learner @relation(fields: [learnerId], references: [id])
+  track   Track   @relation(fields: [trackId], references: [id])
+  subject Subject @relation(fields: [subjectId], references: [id])
+  topic   Topic   @relation(fields: [topicId], references: [id])
+
+  @@unique([learnerId, topicId])
+  @@index([learnerId, trackId])
+}
